@@ -11,7 +11,7 @@
   (if (listp lst)
       (let ((type (car lst)))
         (cond ((eql type :|dict|)
-               (let ((answer (make-hash-table)))             
+               (let ((answer (make-hash-table :test 'equal)))             
                  (dolist (pair (pair-list (cdr lst)))
                    (setf (gethash (second (car pair)) answer)
                          (switch-to-cl-type (cdr pair))))
