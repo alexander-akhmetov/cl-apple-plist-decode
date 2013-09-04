@@ -1,4 +1,4 @@
-(declaim (optimize (debug 3) (speed 0) (safety 3)))
+(declaim (optimize (debug 0) (speed 3) (safety 0)))
 
 (in-package :cl-apple-plist-decode)
 
@@ -13,8 +13,10 @@
         (cond ((eql type :|dict|)
                (let ((answer (make-hash-table :test 'equal)))             
                  (dolist (pair (pair-list (cdr lst)))
-                   (setf (gethash (second (car pair)) answer)
-                         (switch-to-cl-type (cdr pair))))
+                   (when (listp (car pair))
+                     (print pair)
+                     (setf (gethash (second (car pair)) answer)
+                           (switch-to-cl-type (cdr pair)))))
                  answer))
               ((eql type :|array|)
                (coerce (mapcar #'switch-to-cl-type (cdr lst)) 'vector))
