@@ -14,7 +14,6 @@
                (let ((answer (make-hash-table :test 'equal)))             
                  (dolist (pair (pair-list (cdr lst)))
                    (when (listp (car pair))
-                     (print pair)
                      (setf (gethash (second (car pair)) answer)
                            (switch-to-cl-type (cdr pair)))))
                  answer))
