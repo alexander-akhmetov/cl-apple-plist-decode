@@ -1,0 +1,12 @@
+("quicklisp" .
+ (:class qlot.source.ql:source-ql-all
+  :initargs (:distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "2019-10-08"))
+("ultralisp" .
+ (:class qlot.source.ql:source-ql-all
+  :initargs (:distribution "http://dist.ultralisp.org/" :%version :latest)
+  :version "20191011145005"))
+("s-xml" .
+ (:class qlot.source.ql:source-ql
+  :initargs (:project-name "s-xml" :distribution "http://beta.quicklisp.org/dist/quicklisp.txt" :%version :latest)
+  :version "ql-2019-10-08"))
