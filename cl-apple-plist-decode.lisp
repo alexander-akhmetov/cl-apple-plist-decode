@@ -11,7 +11,7 @@
   (if (listp lst)
       (let ((type (car lst)))
         (cond ((eql type :|dict|)
-               (let ((answer (make-hash-table :test 'equal)))             
+               (let ((answer (make-hash-table :test 'equal)))
                  (dolist (pair (pair-list (cdr lst)))
                    (when (listp (car pair))
                      (setf (gethash (second (car pair)) answer)
@@ -25,7 +25,7 @@
                (second lst))
               ((eql type :|real|)
                (read-from-string (second lst)))
-              (t 
+              (t
                (error "unsupproted type")
                nil)))
       (cond ((eql lst :|false|)
@@ -37,8 +37,11 @@
             (t
              (error "unknown type")
              nil))))
-  
+
 (defun aplist-decode-file (path)
   (let ((xml (s-xml:parse-xml-file path)))
     (switch-to-cl-type (cadr xml))))
 
+(defun aplist-decode-string (string)
+  (let ((xml (s-xml:parse-xml-string string)))
+    (switch-to-cl-type (cadr xml))))

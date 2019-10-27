@@ -1,3 +1,4 @@
-(defpackage :cl-apple-plist-decode 
+(defpackage :cl-apple-plist-decode
   (:use :cl)
-  (:export aplist-decode-file))
+  (:export aplist-decode-file
+           aplist-decode-string))
